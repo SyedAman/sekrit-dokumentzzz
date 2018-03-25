@@ -20,7 +20,9 @@ export default class NewEntry extends Component {
     const value = e.target.value;
     const entry = {};
     entry[key] = value;
-    this.setState({ entry });
+    this.setState(prevState => ({
+      entry: {...prevState.entry, ...entry}
+    }));
   }
 
   render() {
