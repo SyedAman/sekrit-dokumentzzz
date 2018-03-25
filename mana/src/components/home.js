@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { StyledLink } from './styledComp';
-
 export default class Home extends Component {
   constructor(props){
     super(props);
