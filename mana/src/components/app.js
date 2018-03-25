@@ -12,29 +12,51 @@ class App extends Component {
       entries: [
         {
           title: 'First Entry',
-          date: '1/1/2018',
+          date: '2018-01-02',
+          phrase: 'lorem',
           log: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente maxime nobis totam a in laudantium tenetur deserunt inventore sit molestiae officia doloremque accusantium, voluptate praesentium placeat quo rerum ab dolore`,
           emotion: {
-            "Neutral": 0.760,
-            "Happy": 0.000,
-            "Sad": 0.238,
-            "Angry": 0.001,
-            "Fear": 0.000
+            Neutral: 0.760,
+            Happy: 0.000,
+            Sad: 0.238,
+            Angry: 0.001,
+            Fear: 0.000
           },
         }
       ]
     }
   }
+
+  createEntry = (newEntry) => {
+    const Neutral = parseFloat((1 * Math.random()).toFixed(3));
+    const Happy = parseFloat(((1 - Neutral) * Math.random()).toFixed(3));
+    const Sad = parseFloat(((1 - Happy - Neutral) *  Math.random()).toFixed(3));
+    const Angry = parseFloat(((1 - Sad - Happy - Neutral) *  Math.random()).toFixed(3));
+    const Fear = parseFloat((1 - Angry - Sad - Happy - Neutral).toFixed(3));
+    
+    newEntry.emotions = { Neutral, Happy, Sad, Angry, Fear}
+
+    this.setState((prevState) => ({
+      entries: [...prevState.entries, newEntry ]
+    }));
+
+
+  }
+
   render() {
     return (
       <BrowserRouter> 
         <div>
-          hello world
           <Switch>
-            <Route path="/entry/new" component={NewEntry} />
-            // This is the second Route because :id is a wildcard and will accept anything.
-            <Route path="/entry/:id" component={ViewEntry}/>
-            <Route path="/" component={Home} />
+            <Route path="/new" render={() =>(
+              <NewEntry createEntry={this.createEntry} />  
+            )} />
+            <Route path="/entry/:id" render={(props) => (
+              <ViewEntry {...props} entries={this.state.entries} />
+            )}/>
+            <Route path="/" render={()=> (
+              <Home entries={this.state.entries} />
+            )}/>
           </Switch>
         </div>
       </BrowserRouter>
