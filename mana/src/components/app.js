@@ -46,7 +46,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter> 
-        <div>
+        <div className="App">
           <Switch>
             <Route path="/new" render={() =>(
               <NewEntry createEntry={this.createEntry} />  

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { StyledLink } from './styledComp';
+
 export default class Home extends Component {
   constructor(props){
     super(props);
@@ -11,7 +13,7 @@ export default class Home extends Component {
   renderEntries() {
     return this.props.entries.map((entry, i) => (
       <li key={entry.title}>
-        <Link to={`/entry/${i}`}>
+        <Link className="waves-effect waves-light btn entry-list-item" to={`/entry/${i}`}>
           {entry.title} 
           <span>{new Date(entry.date).toDateString()}</span>
         </Link>
@@ -21,10 +23,12 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Echo Journal ;)</h1>
-        <Link to="/new">Add</Link>
-        {this.renderEntries()}
+      <div className="Home">
+        <h1>Echo Journal</h1>
+        <div className="entry-list">
+          {this.renderEntries()}
+        </div>
+        <Link className="waves-effect waves-light btn" to="/new">+</Link>        
       </div>
     );
   }

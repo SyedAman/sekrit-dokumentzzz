@@ -7,8 +7,8 @@ export default class NewEntry extends Component {
     this.state = {
       title: '',
       date: new Date(),
-      phrase: 'Hello',
-      log: 'enter text',
+      phrase: '',
+      log: '',
     }
   }
 
@@ -22,31 +22,30 @@ export default class NewEntry extends Component {
 
   render() {
     return (
-      <div>
-        <Link to="/">Home</Link>
-        <input id="title" type="text" placeholder="title" 
+      <div className="New-Entry">
+        <Link className="waves-effect waves-light btn" to="/">Home</Link>
+        <h1>New Journal Entry</h1>
+        <input id="title" type="text" placeholder="Title" 
           value={this.state.title}
           onChange={ this.handleChange } 
         />
-        <h2>Phrase</h2>
-        <input id="phrase" type="text" placeholder="phrase" 
+        <input id="phrase" type="text" placeholder="Phrase" 
           value={this.state.phrase}
           onChange={ this.handleChange }        
         />
         <input id="file" type="file"/>
-        <button>Upload</button>
+        <button className="waves-effect waves-light btn" >Upload</button>
         <br/>
-        <h2>Log</h2>        
         <input id="date" type="date"
           value={this.state.date}
           onChange={ this.handleChange }        
         />
         <br/>
-        <textarea id="log" name="log" id="log" cols="30" rows="10" 
+        <textarea id="log" name="log" cols="30" rows="10" placeholder="Log"
           value={this.state.log}
           onChange={ this.handleChange }
         />
-        <button onClick={() => this.props.createEntry(this.state)} >Submit</button>
+        <button className="waves-effect waves-light btn btn-submit" onClick={() => this.props.createEntry(this.state)} >Submit</button>
       </div>
     );
   }
