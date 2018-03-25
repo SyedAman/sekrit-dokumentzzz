@@ -106,7 +106,7 @@ export default class Emotion extends Component {
         <div className="chart-legend">
           {keys.map((key, i) => (
             <div className="chart-legend-key">
-              <div className={`chart-legend-key-circle ${colors[i]}`}></div>
+              <div className={`chart-legend-key-circle ${colors[i]}`}>{`${Math.round(values[i])}%`}</div>
               <h3>{key}</h3>
             </div>
           ))}

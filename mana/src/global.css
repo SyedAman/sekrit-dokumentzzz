@@ -90,24 +90,29 @@ h2{
   align-items: center;
 }
 .chart-legend-key-circle{
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   margin: 0.5rem;
   border-radius: 50%;
+  line-height: 3rem;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
 }
 
 .red{
   background: #FF5A5E;
 }
-.green{
+.grey{
   background: #46BFBD;
 }
 .yellow{
   background: #FDB45C;
+  color: black;
 }
-.949FB1{
+.purple{
   background: #949FB1;
 }
-.4D5360{
+.green{
   background: #4D5360;
 }
