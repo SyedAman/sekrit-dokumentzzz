@@ -4,8 +4,9 @@ import { PolarArea } from 'react-chartjs';
 export default class Emotion extends Component {
 
   render() {
-    if(!this.props.emotion)
+    if(!this.props.emotion){
       return null;
+    }
     const keys = Object.keys(this.props.emotion);
     const values = Object.values(this.props.emotion).map(v=>Math.round(v*100));
     const data = [

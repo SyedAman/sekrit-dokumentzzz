@@ -34,8 +34,7 @@ class App extends Component {
     const Angry = parseFloat(((1 - Sad - Happy - Neutral) *  Math.random()).toFixed(3));
     const Fear = parseFloat((1 - Angry - Sad - Happy - Neutral).toFixed(3));
     
-    entry.emotions = { Neutral, Happy, Sad, Angry, Fear}
-
+    entry.emotion = { Neutral, Happy, Sad, Angry, Fear}
     this.setState((prevState) => ({
       entries: [...prevState.entries, entry ]
     }));
